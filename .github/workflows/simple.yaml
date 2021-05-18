@@ -19,7 +19,7 @@ jobs:
           print(platform.processor())
         shell: python
 
-  Run-windows-command:
+  "Test run on a windows machine":
     runs-on: windows-latest
     steps:
       - name: Get Current Directory via Powershell
