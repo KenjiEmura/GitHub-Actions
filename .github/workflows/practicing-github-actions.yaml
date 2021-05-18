@@ -1,4 +1,4 @@
-name: Actions Workflow
+name: Github Actions Workflow Practice
 
 on: [push]
 

@@ -1,4 +1,4 @@
-name: Shell Commands
+name: Basic Shell Commands
 
 # Events that will trigger this event
 on: [push]
