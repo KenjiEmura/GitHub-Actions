@@ -6,10 +6,14 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: List files on current directory
+        run: |
+          pwd
+          ls
       - name: Simple JS Action
         id: greet
         # We can also use an specific commit ID after the "@"
-        uses: actions/hello-world-javascript-action@v1
+        uses: actions/hello-world-javascript-action@v1.1
         with:
           who-to-greet: Kenji
       - name: Log the Greeting Time
