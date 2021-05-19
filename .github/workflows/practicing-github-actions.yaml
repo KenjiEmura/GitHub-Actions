@@ -1,6 +1,10 @@
 name: Github Actions Workflow Practice
 
-on: [push, pull_request]
+# Some events have something called "Activity Types", here we see that the pull_request is one of those events
+on:
+  # push:
+  pull_request:
+    types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:

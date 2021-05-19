@@ -1,7 +1,7 @@
 name: Basic Shell Commands
 
 # Events that will trigger this event
-on: [push]
+on: []
 
 jobs:
   run-commands-on-linux:
