@@ -21,7 +21,7 @@ jobs:
           # git clone git@github.$GITHUB_REPOSITORY
           # git checkout echo $GITHUB_SHA
       - name: Checkout (From official Github actions)
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: List files after checkout
         run: |
           pwd

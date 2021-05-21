@@ -1,5 +1,4 @@
-name: Shell Commands Run On Push
-
+name: Sequenced Shell Commands (Runs on push)
 # Events that will trigger this event
 on: [push]
 
