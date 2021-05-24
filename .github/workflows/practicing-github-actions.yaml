@@ -5,14 +5,14 @@ on:
   push:
     # The "branches" can be also used with pull_requests, instead of 'branches', we can use branches-ignore, but
     # we can not use "branches" and "branches-ignore" at the same time
-    branches:
+    # branches:
       # - main
       # - 'feature/*' # Matches feature/A, feature/B but not feature/A/subA
       # - 'feature/**' # Matches feature/A/subA
       # - '!feature/C' # this will ignore feature/C, even though is being matched by the previous 2 selectors
     # The "tags" work exactly the same as the branches, they also have a "tags-ignore"
-    tags:
-      - v1.*
+    # tags:
+    #   - v1.*
     # We can also filter by paths, they also have "paths-ignore"
     paths:
       - "**.js"
