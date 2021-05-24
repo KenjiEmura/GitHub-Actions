@@ -3,7 +3,7 @@ name: Github Actions Workflow Practice
 # Some events have something called "Activity Types", here we see that the pull_request is one of those events
 on:
   repository_dispatch:
-    types: [event_name_here]
+    types: [custom_event_name]
   # push:
   # schedule:
   #   # Run this workflow every 5 and 7 minutes:
@@ -17,6 +17,10 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Printing out the client_payload sent with the dispatch
+        run: |
+          echo {{ github.event.client_payload.build_type }}
+          echo {{ github.event.client_payload.description }}
       - name: List files on current directory (Before Checkout)
         run: |
           pwd
