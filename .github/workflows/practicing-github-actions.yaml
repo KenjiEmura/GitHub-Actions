@@ -2,12 +2,14 @@ name: Github Actions Workflow Practice
 
 # Some events have something called "Activity Types", here we see that the pull_request is one of those events
 on:
+  repository_dispatch:
+    types: [event_name_here]
   # push:
-  schedule:
-    # Run this workflow every 5 and 7 minutes:
-    # You CAN'T run smaller time intervals
-    - cron: "0/5 * * * *"
-    - cron: "0/7 * * * *"
+  # schedule:
+  #   # Run this workflow every 5 and 7 minutes:
+  #   # You CAN'T run smaller time intervals
+  #   - cron: "0/5 * * * *"
+  #   - cron: "0/7 * * * *"
   pull_request:
     types: [closed, assigned, opened, reopened]
 
