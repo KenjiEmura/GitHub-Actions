@@ -19,8 +19,8 @@ jobs:
     steps:
       - name: Printing out the client_payload sent with the dispatch
         run: |
-          echo {{ github.event.client_payload.build_type }}
-          echo {{ github.event.client_payload.description }}
+          echo ${{ github.event.client_payload.build_type }}
+          echo ${{ github.event.client_payload.description }}
       - name: List files on current directory (Before Checkout)
         run: |
           pwd
