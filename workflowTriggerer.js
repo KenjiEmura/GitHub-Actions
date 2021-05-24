@@ -1,0 +1,1 @@
+console.log("This will trigger the 'practicing-github-actions' workflow")

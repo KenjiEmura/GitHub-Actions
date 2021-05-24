@@ -7,6 +7,8 @@ GITHUB_SHA = The ID of the commit that was pushed, unless deleting a branch
 GITHUB_REF = The ID of the current branch
 
 # Dispatch event:
+https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
+
 POST request to:
 https://api.github.com/repos/{owner}/{repo_name}/dispatches
 https://api.github.com/repos/KenjiEmura/GitHub-Actions/dispatches
@@ -24,3 +26,7 @@ client_payload is a JSON payload with extra information about the webhook event 
   "build_type": "production",
   "description": "Some additional information..."
 }
+
+# Filter pattern:
+https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+

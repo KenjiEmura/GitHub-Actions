@@ -2,16 +2,36 @@ name: Github Actions Workflow Practice
 
 # Some events have something called "Activity Types", here we see that the pull_request is one of those events
 on:
-  repository_dispatch:
-    types: [custom_event_name]
-  # push:
+  push:
+    # The "branches" can be also used with pull_requests, instead of 'branches', we can use branches-ignore, but
+    # we can not use "branches" and "branches-ignore" at the same time
+    branches:
+      - "!main"
+      - 'feature/*' # Matches feature/A, feature/B but not feature/A/subA
+      - 'feature/**' # Matches feature/A/subA
+      - '!feature/C' # this will ignore feature/C, even though is being matched by the previous 2 selectors
+    # The "tags" work exactly the same as the branches, they also have a "tags-ignore"
+    tags:
+      - v1.*
+    # We can also filter by paths, they also have "paths-ignore"
+    paths:
+      - "**.js"
+      - "!excluded.js"
+
+      
+  # repository_dispatch:
+  #   types: [custom_event_name]
+
+
   # schedule:
   #   # Run this workflow every 5 and 7 minutes:
   #   # You CAN'T run smaller time intervals
   #   - cron: "0/5 * * * *"
   #   - cron: "0/7 * * * *"
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+
+
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
