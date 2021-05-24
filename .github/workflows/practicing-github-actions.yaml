@@ -4,9 +4,10 @@ name: Github Actions Workflow Practice
 on:
   # push:
   schedule:
-    # Run this workflow every 2 and 5 minutes:
-    - cron: "0/2 * * * *"
-    - cron: "0/5 * * * *"
+    # Run this workflow every 5 and 7 minutes:
+    # You CAN'T run smaller time intervals
+    - cron: "*/5 * * * *"
+    - cron: "*/7 * * * *"
   pull_request:
     types: [closed, assigned, opened, reopened]
 
