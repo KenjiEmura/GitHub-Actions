@@ -3,6 +3,10 @@ name: Github Actions Workflow Practice
 # Some events have something called "Activity Types", here we see that the pull_request is one of those events
 on:
   # push:
+  schedule:
+    # Run this workflow every 2 and 5 minutes:
+    - cron: "*/2 * * * *"
+    - cron: "*/5 * * * *"
   pull_request:
     types: [closed, assigned, opened, reopened]
 
