@@ -1,6 +1,8 @@
 name: Sequenced Shell Commands (Runs on push)
 # Events that will trigger this event
-on: [push]
+on:
+  pull_request:
+    types: [closed, assigned, opened, reopened]
 
 jobs:
   run-commands-on-linux:
