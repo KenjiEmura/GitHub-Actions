@@ -6,7 +6,7 @@ on:
     # The "branches" can be also used with pull_requests, instead of 'branches', we can use branches-ignore, but
     # we can not use "branches" and "branches-ignore" at the same time
     branches:
-      - "!main"
+      - main
       - 'feature/*' # Matches feature/A, feature/B but not feature/A/subA
       - 'feature/**' # Matches feature/A/subA
       - '!feature/C' # this will ignore feature/C, even though is being matched by the previous 2 selectors
