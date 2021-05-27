@@ -1,0 +1,21 @@
+name: Handling an encripted file
+
+on:
+  repository_dispatch:
+    types: [decrypt]
+
+jobs:
+  create_commit_on_repository_dispatch:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v1
+      - name: Decrypt out my_secret.json.gpg file
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+        # gpg is preinstalled on github machines so we can use it without installing anything additional
+        # The --quiet flag makes the gpg command to NOT print everything that is happening inside
+        # --batch will disable interactivity in the command line and in case the process need some input
+        # from the user, the answer will always be --yes
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/decrypted.json my_secret.json.gpg
+      - name: Print our file content
+        run: cat $HOME/decrypted.json

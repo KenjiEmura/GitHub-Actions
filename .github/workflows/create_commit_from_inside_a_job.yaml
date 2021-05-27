@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Push random file from the running virtual machine
         # We will clone our repository to this working directory
+        # Also a NEW text file with a random number as name will be created
         run: |
           pwd
           echo "The directory before all the git stuff:"
@@ -17,7 +18,7 @@ jobs:
           git init -b main
           git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           git config --global user.email "kenjibot@bot.bot"
-          git config --global user.name "kenjibot"
+          git config --global user.name "Kenji Bot"
           git fetch
           git checkout main
           git branch --set-upstream-to=origin/main

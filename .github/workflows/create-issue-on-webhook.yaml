@@ -2,7 +2,7 @@ name: Create issue on repository dispatch
 
 on:
   repository_dispatch:
-    types: [webhook]
+    types: [issue]
 
 jobs:
   create_issue_on_repository_dispatch:
