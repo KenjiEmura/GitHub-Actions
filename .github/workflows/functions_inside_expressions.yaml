@@ -8,6 +8,10 @@ jobs:
   print_out_different_available_functions:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo the github context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Echoing the functions
         run: |
           echo ${{ contains( 'hello', 'll') }}

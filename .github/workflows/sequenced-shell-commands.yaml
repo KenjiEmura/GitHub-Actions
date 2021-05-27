@@ -8,8 +8,10 @@ jobs:
   run-commands-on-linux:
     runs-on: ubuntu-latest
     steps:
-      - name: echo a string
-        run: echo "Hello world!"
+      - name: Echo the github context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: multiline script
         run: |
           node -v

@@ -15,7 +15,7 @@ jobs:
         if: failure()
         run: echo "This step was run even when the previous step failed"
       - name: Step 3
-        run: echo "This message proves that the proces will continue normally even when step 1 failed"
+        run: echo "This won't run, we have to add an additional 'if' to make it run when failure"
   alternative_job:
     runs-on: ubuntu-latest
     if: github.event.action == 'job_status_alternative'
