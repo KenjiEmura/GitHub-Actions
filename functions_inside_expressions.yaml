@@ -1,0 +1,16 @@
+name: Functions inside expressions
+
+on:
+  repository_dispatch:
+    type: [functions]
+
+jobs:
+  print_out_different_available_functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echoing the functions
+        run: |
+          echo ${{ contains( 'hello', 'll') }}
+          echo ${{ startsWith( 'hello', 'he') }}
+          echo ${{ endsWith( 'hello', 'lo') }}
+          echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!')}}
