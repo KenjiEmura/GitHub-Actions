@@ -1,0 +1,24 @@
+name: Job status functions
+
+on:
+  repository_dispatch:
+    types: [job_status, job_status_alternative]
+
+jobs:
+  default_job:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'job_status'
+    steps:
+      - name: Step 1
+        run: eccho "Failed step"
+      - name: Step that will run even with failure
+        if: failure()
+        run: echo "This step was run even when the previous step failed"
+      - name: Step 3
+        run: echo "This message proves that the proces will continue normally even when step 1 failed"
+  alternative_job:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'job_status_alternative'
+    steps:
+      - name: Logging the step information
+        run: eccho "The alternative step was run"

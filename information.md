@@ -1,4 +1,5 @@
 # Github Workflows
+https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 
 
 ## Events that will trigger workflows:
@@ -85,5 +86,5 @@ https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-g
 We also have some fuctions that we can run inside the expressions, for a more detailed explanation, check the official documentation:
 https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#functions
 
-
+Additionally, we can use some satatus check functions as expressions in `if` conditionals.
 
