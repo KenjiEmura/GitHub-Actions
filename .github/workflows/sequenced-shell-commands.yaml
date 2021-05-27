@@ -2,7 +2,7 @@ name: Sequenced Shell Commands (Runs on push)
 # Events that will trigger this event
 on:
   repository_dispatch:
-    type: [shell]
+    types: [shell]
 
 jobs:
   run-commands-on-linux:

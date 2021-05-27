@@ -2,7 +2,7 @@ name: Functions inside expressions
 
 on:
   repository_dispatch:
-    type: [functions]
+    types: [functions]
 
 jobs:
   print_out_different_available_functions:
