@@ -1,0 +1,46 @@
+name: Logging different contexts
+
+on:
+  repository_dispatch:
+    types: [log_contexts]
+
+jobs:
+  one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: |
+          echo "github context:"
+          echo "$GITHUB_CONTEXT"
+      - name: Log job context
+        env:
+          JOB_CONTEXT: ${{ toJSON(job) }}
+        run: |
+          echo "job context:"
+          echo "$JOB_CONTEXT"
+      - name: Log steps context
+        env:
+          STEPS_CONTEXT: ${{ toJSON(steps) }}
+        run: |
+          echo "steps context:"
+          echo "$STEPS_CONTEXT"
+      - name: Log runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJSON(runner) }}
+        run: |
+          echo "runner context:"
+          echo "$RUNNER_CONTEXT"
+      - name: Log strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
+        run: |
+          echo "strategy context:"
+          echo "$STRATEGY_CONTEXT"
+      - name: Log matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: |
+          echo "matrix context:"
+          echo "$MATRIX_CONTEXT"

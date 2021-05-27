@@ -72,6 +72,13 @@ We then set our passphrase and to decrypt the file while running remotely inside
 
 ## Authentication in a workflow
 https://docs.github.com/en/actions/reference/authentication-in-a-workflow
-
 Without setting any secret, we have access to the ${{ secrets.GITHUB_TOKEN }} for authentication.
+
+
+
+## Expressions and context ${{  }}
+You can put variables and also functions inside `${{}}`.
+
+The objects created by Github and available inside an expression are called **context**, so for example, in `${{ secrets.PASSPHRASE }}`, the context will be the 'secrets' context. In the link below, you can find a list of all available context:
+https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions
 
