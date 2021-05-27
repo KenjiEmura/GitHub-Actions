@@ -2,7 +2,9 @@ name: Github Actions Workflow Practice
 
 # Some events have something called "Activity Types", here we see that the pull_request is one of those events
 on:
-  push:
+  repository_dispatch:
+    types: [log_contexts]
+  # push:
     # The "branches" can be also used with pull_requests, instead of 'branches', we can use branches-ignore, but
     # we can not use "branches" and "branches-ignore" at the same time
     # branches:
@@ -14,9 +16,9 @@ on:
     # tags:
     #   - v1.*
     # We can also filter by paths, they also have "paths-ignore"
-    paths:
-      - "**.js"
-      - "!excluded.js"
+    # paths:
+    #   - "**.js"
+    #   - "!excluded.js"
 
       
   # repository_dispatch:
