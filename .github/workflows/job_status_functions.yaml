@@ -11,10 +11,13 @@ jobs:
     steps:
       - name: Step 1
         run: eccho "Failed step"
-      - name: Step that will run even with failure
+      - name: Step 2 (will run even with failure)
         if: failure()
         run: echo "This step was run even when the previous step failed"
-      - name: Step 3
+      - name: Step 3 (Won't run because doesn't have the if failure check)
+        run: echo "This won't run, we have to add an additional 'if' to make it run when failure"
+      - name: Step 4 (Will run because we included again the if failure check)
+        if: failure()
         run: echo "This won't run, we have to add an additional 'if' to make it run when failure"
   alternative_job:
     runs-on: ubuntu-latest
