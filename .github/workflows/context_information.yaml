@@ -5,42 +5,37 @@ on:
     types: [log_contexts]
 
 jobs:
-  one:
+  log_the_different_contexts:
     runs-on: ubuntu-latest
     steps:
       - name: Log GitHub context
+        id: github
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: |
-          echo "github context:"
-          echo "$GITHUB_CONTEXT"
+        run: echo "$GITHUB_CONTEXT"
       - name: Log job context
+        id: job
         env:
           JOB_CONTEXT: ${{ toJSON(job) }}
-        run: |
-          echo "job context:"
-          echo "$JOB_CONTEXT"
+        run: echo "$JOB_CONTEXT"
+      # For the "steps" context, we need to assign id to the different steps
       - name: Log steps context
+        id: steps
         env:
           STEPS_CONTEXT: ${{ toJSON(steps) }}
-        run: |
-          echo "steps context:"
-          echo "$STEPS_CONTEXT"
+        run: echo "$STEPS_CONTEXT"
       - name: Log runner context
+        id: runner
         env:
           RUNNER_CONTEXT: ${{ toJSON(runner) }}
-        run: |
-          echo "runner context:"
-          echo "$RUNNER_CONTEXT"
+        run: echo "$RUNNER_CONTEXT"
       - name: Log strategy context
+        id: strategy
         env:
           STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
-        run: |
-          echo "strategy context:"
-          echo "$STRATEGY_CONTEXT"
+        run: echo "$STRATEGY_CONTEXT"
       - name: Log matrix context
+        id: matrix
         env:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
-        run: |
-          echo "matrix context:"
-          echo "$MATRIX_CONTEXT"
+        run: echo "$MATRIX_CONTEXT"
