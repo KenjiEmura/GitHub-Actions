@@ -3,7 +3,7 @@ name: Github Actions Workflow Practice
 # Some events have something called "Activity Types", here we see that the pull_request is one of those events
 on:
   repository_dispatch:
-    types: [log_contexts]
+    types: [actions]
   # push:
     # The "branches" can be also used with pull_requests, instead of 'branches', we can use branches-ignore, but
     # we can not use "branches" and "branches-ignore" at the same time
