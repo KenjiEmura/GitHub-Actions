@@ -24,4 +24,4 @@ jobs:
     if: github.event.action == 'job_status_alternative'
     steps:
       - name: Logging the step information
-        run: eccho "The alternative step was run"
+        run: echo "The alternative step was run"
