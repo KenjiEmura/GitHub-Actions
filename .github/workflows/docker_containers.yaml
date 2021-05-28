@@ -19,13 +19,11 @@ jobs:
         with:
           entrypoint: '/bin/echo'
           args: 'Hello world!!'
-        run: node -v
       - name: Docker - Log Node version from container and from 'run:'
         uses: docker://node:12.14.1-alpine3.10
         with:
           entrypoint: '/usr/local/bin/node'
           args: '-v'
-        run: node -v
 
   sample-node-docker-app:
     runs-on: ubuntu-latest
