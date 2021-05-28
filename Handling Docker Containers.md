@@ -9,3 +9,7 @@ Usually, `ENTRYPOINT` uses an array which first argument is a path to the comman
 If we add after that a `CMD ['world!!']` that last command will act as a third argument for the `ENTRYPOINT`, so `Hello world!!` will be printed.
 
 We can also run diferent containers along the different steps of our workflow by putting the image in the `uses:` property. We can modify the default `ENRYPOINT` of the image by using the `with` property. Unlike the default `ENTRYPOINT`'s behaviour, in Github Actions, we define the entrypoint with just the path to the executable.
+
+
+## Running our own executables
+We can add a `.sh` file with execution privilages (`chmod +x script.sh`) to the `entrypoint` key.

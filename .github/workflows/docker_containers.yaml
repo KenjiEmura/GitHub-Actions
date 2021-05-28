@@ -24,6 +24,13 @@ jobs:
         with:
           entrypoint: '/usr/local/bin/node'
           args: '-v'
+      - uses: actions/checkout@v1
+      - name: Docker - Run our custom script
+        uses: docker://node:12.14.1-alpine3.10
+        with:
+          # To use our own .sh files, we need to make sure that the file has 'execution' privileges, we can run 'chmod +x script.sh'
+          entrypoint: ./script.sh
+          args: 'Some string'
 
   sample-node-docker-app:
     runs-on: ubuntu-latest
