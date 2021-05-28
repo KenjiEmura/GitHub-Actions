@@ -5,7 +5,25 @@ on:
     types: [docker]
 
 jobs:
-  handling_a_docker_container:
+  sample-node-docker-app:
+    runs-on: ubuntu-latest
+    # Inside the 'services' key, we will have a very similar structure to the one that we have in docker-compose
+    services:
+      app:
+        image: kenjiemura/github-actions-sample-nodeapp
+        ports:
+          - 3000:3000
+      mongo:
+        image: mongo
+        ports:
+          - "27017:27017"
+    steps:
+      - name: Post a new user to our API
+        run: "curl -X POST http://localhost:3000/api/user -H 'Content-Type: application/json' -d '{	\"username\": \"hello\",	\"address\": \"dwded\"}'"
+      - name: Get registered users
+        run: curl http://localhost:3000/api/users
+
+  random_docker_container:
     runs-on: ubuntu-latest
     container:
       image: node:current-alpine3.12

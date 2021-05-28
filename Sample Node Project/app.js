@@ -10,7 +10,7 @@ app.use("/assets", express.static(__dirname + "/public"));
 mongoose.connect(
   "mongodb://mongo:27017/users",
   { useNewUrlParser: true, useUnifiedTopology: true },
-  err => {
+  (err) => {
     console.log(err);
   }
 );
