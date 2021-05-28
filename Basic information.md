@@ -139,6 +139,11 @@ In this case, we set the overall job's max time to one day and the 'Sample Step'
 We will use Node to test how to set up different environments with different versions:
 https://github.com/actions/setup-node
 
+We can use the 'matrix' strategy to run our jobs using differents set ups (go to the matrix.yaml file to see the implementation). In our example, we defined a two-dimension matrix that will run different versions of Node in different operative systems. We defined 3 Node versions and 3 operative systems, so that means that our job will be executed 9 times using the different combinations.
 
+### Exclude
+If for example, we add a third property (third dimension), this will increase dramatically the times that our job will be executed. Thats why we can define exactly which combinations we want to run and which ones we want to exclude using the `exclude` property.
 
+### Include
+If we need to have an additional property in some of our combinations, we can use the `include` property which will add the desired property ONLY in the configuration we define.
 

@@ -9,15 +9,32 @@ jobs:
     strategy:
       matrix:
         # Inside the 'matrix' option, we define a set of key-value pairs with whatever names we want
-        the_operating_system: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
         defined_node_version: [6,8,16]
+        # Inside the exclude property, we can define a combination of properties that we DON'T want to run
+        exclude:
+          - os: ubuntu-latest
+            defined_node_version: [6, 8]
+          - os: windows-latest
+            defined_node_version: 6
+        # With include, we can define an additional property that will only exist for the combination we define,
+        # we will check if the new property exists using an env: variable
+        include:
+          - os: macos-lates
+            defined_node_version: 16
+            new_property: "true"
       # By default, fail-fast is set to 'true', this means that if any of the jobs that will run
       # on our matrix fail, the other ones will fail aswell. If set to 'false', they will run even if
       # one of the matrix's job fails.
       fail-fast: true
     # To access the current operative system, we use the 'matrix' context
-    runs-on: ${{ matrix.the_operating_system }}
+    runs-on: ${{ matrix.os }}
+    env:
+      NEW_PROPERTY_EXISTS: ${{ matrix.new_property }}
     steps:
+      - name: Checking if the 'new_property' exists
+        id: new-property-exists
+        run: echo "$NEW_PROPERTY_EXISTS"
       - name: Log node version
         id: log-node-version
         run: node -v
