@@ -1,0 +1,15 @@
+name: Send Slack Message
+
+on:
+  repository_dispatch:
+    types: [slack]
+  
+jobs:
+  send_slack_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a slack message
+        uses: docker://technosophos/slack-notify
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: ${{ github.event.client_payload.message }}
