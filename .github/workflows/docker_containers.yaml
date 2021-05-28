@@ -12,20 +12,21 @@ jobs:
     steps:
       - name: Log the Node version
         run: node -v
-      - name: Docker - Echoing 'Hello world!!'
+      - name: Echoing 'Hello world!!'
         # With 'uses:' additionally to the normal actions that we already saw (actions/checkout...), we can use Docker images
         uses: docker://node:12.14.1-alpine3.10
         # We can override the default image ENTRYPOINT by using the 'with' property
         with:
           entrypoint: '/bin/echo'
           args: 'Hello world!!'
-      - name: Docker - Log Node version from container and from 'run:'
+      - name: Log Node version from container and from 'run:'
         uses: docker://node:12.14.1-alpine3.10
         with:
           entrypoint: '/usr/local/bin/node'
           args: '-v'
-      - uses: actions/checkout@v1
-      - name: Docker - Run our custom script
+      - name: Using 'actions/checkout@v1'
+        uses: actions/checkout@v1
+      - name: Run our custom script
         uses: docker://node:12.14.1-alpine3.10
         with:
           # To use our own .sh files, we need to make sure that the file has 'execution' privileges, we can run 'chmod +x script.sh'
