@@ -13,6 +13,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: multiline script
+        if: failure()
         run: |
           node -v
           npm -v

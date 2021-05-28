@@ -2,15 +2,28 @@
 https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 
 
+
+
+
 ## Events that will trigger workflows:
 https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 
 
 
+
+
+## Sequenced jobs:
+Add `needs: ["job-we-are-waiting-to-finish", "another-job"]` on the root job level, that's it besides the `runs-on:`
+
+
+
+
+
 ## Important environment variables:
-## When pushing:
 GITHUB_SHA = The ID of the commit that was pushed, unless deleting a branch
 GITHUB_REF = The ID of the current branch
+
+
 
 
 
@@ -44,8 +57,13 @@ client_payload is a JSON payload with extra information about the webhook event 
 
 
 
+
+
 ## Filter pattern:
 https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+We can use filters if for instance, we wan to run our workflow when only a certain file/folder/type of file/branch is modified.
+
+
 
 
 
@@ -71,9 +89,13 @@ We then set our passphrase and to decrypt the file while running remotely inside
 
 
 
+
+
 ## Authentication in a workflow
 https://docs.github.com/en/actions/reference/authentication-in-a-workflow
 Without setting any secret, we have access to the ${{ secrets.GITHUB_TOKEN }} for authentication.
+
+
 
 
 
@@ -86,5 +108,35 @@ https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-g
 We also have some fuctions that we can run inside the expressions, for a more detailed explanation, check the official documentation:
 https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#functions
 
-Additionally, we can use some satatus check functions as expressions in `if` conditionals.
+Additionally, we can use some satatus check functions as expressions in `if` conditionals, for example we can use this functionality if we need some step to ALWAYS run even when some previous steps have failed. (see the job_status_functions.yaml for implementation)
+
+
+
+
+
+## timeout-minutes
+By default, you can use the timeout-minutes property to set the maximum amount of time that a job or a step can take. If the process takes more time than the speciefied, it will kill the process. The default value is 360 minutes, so if you think that you will need more than that, you can just simply specify that amount. For example:
+
+```
+jobs:
+  sample-job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1440
+      steps:
+        - name: Sample Step
+          run: --your commands here--
+          timeout-minutes: 60
+        ...
+```
+In this case, we set the overall job's max time to one day and the 'Sample Step' to one hour.
+
+
+
+
+
+
+## Setting up a Node Version
+https://github.com/actions/setup-node
+
+
 

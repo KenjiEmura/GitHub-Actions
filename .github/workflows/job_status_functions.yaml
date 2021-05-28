@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Step 1
         run: eccho "Failed step"
+        # By default is false, but if you need to continue the execution without manually adding 'if'
+        # in every subsequent step, we can change continue-on-error: true
+        continue-on-error: false
       - name: Step 2 (will run even with failure)
         if: failure()
         run: echo "This step was run even when the previous step failed"

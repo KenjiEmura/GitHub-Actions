@@ -1,4 +1,4 @@
-name: Github Actions Workflow Practice
+name: Official Github Actions Workflow Practice
 
 # Some events have something called "Activity Types", here we see that the pull_request is one of those events
 on:

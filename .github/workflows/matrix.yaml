@@ -1,0 +1,33 @@
+name: Matrix
+
+on:
+  repository_dispatch:
+    types: ['matrix']
+
+jobs:
+  node-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log node version
+        run: node -v
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Log node version
+        run: node -v
+      - name: Log strategy context
+        id: strategy
+        env:
+          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Log matrix context
+        id: matrix
+        env:
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      # For the "steps" context, we need to assign id to the different steps
+      - name: Log steps context
+        id: steps
+        env:
+          STEPS_CONTEXT: ${{ toJSON(steps) }}
+        run: echo "$STEPS_CONTEXT"
