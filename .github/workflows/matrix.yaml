@@ -20,7 +20,7 @@ jobs:
         # With include, we can define an additional property that will only exist for the combination we define,
         # we will check if the new property exists using an env: variable
         include:
-          - os: macos-lates
+          - os: macos-latest
             defined_node_version: 16
             new_property: "true"
       # By default, fail-fast is set to 'true', this means that if any of the jobs that will run
