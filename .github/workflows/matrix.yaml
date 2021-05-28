@@ -12,9 +12,14 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
         defined_node_version: [6,8,16]
         # Inside the exclude property, we can define a combination of properties that we DON'T want to run
+        # you CAN'T add an array, of properties, you have to add them one by one
         exclude:
+          - os: macos-latest
+            defined_node_version: 8
           - os: ubuntu-latest
-            defined_node_version: [6, 8]
+            defined_node_version: 6
+          - os: ubuntu-latest
+            defined_node_version: 8
           - os: windows-latest
             defined_node_version: 6
         # With include, we can define an additional property that will only exist for the combination we define,
