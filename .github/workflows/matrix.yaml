@@ -5,14 +5,27 @@ on:
     types: ['matrix']
 
 jobs:
-  node-version:
-    runs-on: ubuntu-latest
+  setting-up-different-node-envs:
+    strategy:
+      matrix:
+        # Inside the 'matrix' option, we define a set of key-value pairs with whatever names we want
+        the_operating_system: [macos-latest, ubuntu-latest, windows-latest]
+        defined_node_version: [6,8,16]
+      # By default, fail-fast is set to 'true', this means that if any of the jobs that will run
+      # on our matrix fail, the other ones will fail aswell. If set to 'false', they will run even if
+      # one of the matrix's job fails.
+      fail-fast: true
+    # To access the current operative system, we use the 'matrix' context
+    runs-on: ${{ matrix.the_operating_system }}
     steps:
       - name: Log node version
+        id: log-node-version
         run: node -v
       - uses: actions/setup-node@v2
+        id: uses-instead-of-name
         with:
-          node-version: '14'
+          # To access the current node version value, we access the context 'matrix'
+          node-version: ${{ matrix.defined_node_version }}
       - name: Log node version
         run: node -v
       - name: Log strategy context

@@ -135,8 +135,10 @@ In this case, we set the overall job's max time to one day and the 'Sample Step'
 
 
 
-## Setting up a Node Version
+## Matrix of environments: strategy option
+We will use Node to test how to set up different environments with different versions:
 https://github.com/actions/setup-node
+
 
 
 
