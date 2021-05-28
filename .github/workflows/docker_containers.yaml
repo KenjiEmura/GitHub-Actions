@@ -1,0 +1,16 @@
+name: Handling Docker Containers
+
+on:
+  repository_dispatch:
+    types: [docker]
+
+jobs:
+  handling_a_docker_container:
+    runs-on: ubuntu-latest
+    container:
+      image: node:curren-alpine3.12
+    steps:
+      - name: Log node version
+        run: |
+          node -v
+          cat /etc/os-release
