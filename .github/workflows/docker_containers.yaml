@@ -5,6 +5,28 @@ on:
     types: [docker]
 
 jobs:
+  docker-steps:
+    runs-on: ubuntu-latest
+    container:
+      image: node:10.18.0-jessie
+    steps:
+      - name: Log the Node version
+        run: node -v
+      - name: Docker - Echoing 'Hello world!!'
+        # With 'uses:' additionally to the normal actions that we already saw (actions/checkout...), we can use Docker images
+        uses: docker://node:12.14.1-alpine3.10
+        # We can override the default image ENTRYPOINT by using the 'with' property
+        with:
+          entrypoint: '/bin/echo'
+          args: 'Hello world!!'
+        run: node -v
+      - name: Docker - Log Node version from container and from 'run:'
+        uses: docker://node:12.14.1-alpine3.10
+        with:
+          entrypoint: '/usr/local/bin/node'
+          args: '-v'
+        run: node -v
+
   sample-node-docker-app:
     runs-on: ubuntu-latest
     # Inside the 'services' key, we will have a very similar structure to the one that we have in docker-compose
