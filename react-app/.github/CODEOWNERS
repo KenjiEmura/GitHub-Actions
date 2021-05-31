@@ -1,0 +1,4 @@
+* @kenjiemura
+*.js @kenjiemura
+*.yaml @kenjiemura
+/public/ @kenjiemura
