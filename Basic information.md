@@ -38,7 +38,7 @@ Inside your .yaml file, you have to add the 'repository_dipatch' hook after the 
 ```
 on:
   repository_dispatch:
-    types: [webhook]
+    types: [your_custom_event_type]
 ```
 
 Auth:
